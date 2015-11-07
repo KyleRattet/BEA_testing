@@ -6,10 +6,11 @@ $(document).on('ready', function() {
   console.log('sanity check!');
 // var id = process.env.ID;
 
-$.get(searchUrl, function( data ) {
-  $( ".result" ).html( data );
-  console.log(data);
-});
+
+// $.get(searchUrl, function( data ) {
+//   $( ".result" ).html( data );
+//   console.log(data);
+// });
  //  var payload =
 
  // $.ajax({
@@ -19,10 +20,10 @@ $.get(searchUrl, function( data ) {
  //      console.log(data);
  //    });
 
-$.get( "/info", function( data ) {
-  $( ".result" ).html( data );
-  console.log(data);
-});
+// $.get( "/info", function( data ) {
+//   $( ".result" ).html( data );
+
+// });
 
 
 });

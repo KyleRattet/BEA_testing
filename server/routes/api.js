@@ -3,8 +3,8 @@ var router = express.Router();
 var request = require('request');
 var http = require('http');
 
-var id = process.env.ID;
-
+var BEA_id = process.env.BEA_ID;
+var CENS_id = process.env.CENS_ID;
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -14,8 +14,8 @@ router.get('/', function(req, res, next) {
 
 
 
-router.get('/info', function(req, res, next) {
-  var url = "http://www.bea.gov/api/data/?&UserID="+id+"&method=GetData&datasetname=RegionalData&KeyCode=PCDPI_SI&GeoFIPS=STATE&Year=2012&ResultFormat=JSON&%27";
+router.get('/data/bea', function(req, res, next) {
+  var url = "http://www.bea.gov/api/data/?&UserID="+BEA_id+"&method=GetData&datasetname=RegionalData&KeyCode=PCDPI_SI&GeoFIPS=STATE&Year=2012&ResultFormat=JSON&%27";
 
   http.get(url, function(response) {
       var body = '';
@@ -33,12 +33,28 @@ router.get('/info', function(req, res, next) {
       console.log("Got error: " + e.message);
     });
 
-
-
-
 });
 
+router.get('/data/census', function(req, res, next) {
+  var url = "http://api.census.gov/data/2010/sf1?key="+CENS_id+"&get=PCT012A015,PCT012A119&for=state:01";
 
+  http.get(url, function(response) {
+      var body = '';
+
+      response.on('data', function(chunk) {
+
+        body += chunk;
+      });
+
+      response.on('end', function() {
+
+        res.send(JSON.parse(body));
+      });
+    }).on('error', function(e) {
+      console.log("Got error: " + e.message);
+    });
+
+});
 
 
 module.exports = router;

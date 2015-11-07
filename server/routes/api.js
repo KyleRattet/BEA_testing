@@ -56,6 +56,8 @@ router.get('/data/census', function(req, res, next) {
 
 });
 
+//GDP By Industry Query
+var url = "http://www.bea.gov/api/data/?&UserID="+BEA_id+"&method=GetData&DataSetName=GDPbyIndustry&Year=2012,2011&Industry=ALL&tableID=1&Frequency=A&ResultFormat=json";
 
 module.exports = router;
 

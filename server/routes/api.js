@@ -59,8 +59,15 @@ router.get('/data/census', function(req, res, next) {
 //GDP By Industry Query
 var url = "http://www.bea.gov/api/data/?&UserID="+BEA_id+"&method=GetData&DataSetName=GDPbyIndustry&Year=2012,2011&Industry=ALL&tableID=1&Frequency=A&ResultFormat=json";
 
+//BEA disposable person INCOME
+ var url = "http://www.bea.gov/api/data/?&UserID="+BEA_id+"&method=GetData&datasetname=RegionalData&KeyCode=PCDPI_SI&GeoFIPS=STATE&Year=2012&ResultFormat=JSON&"
+
 //total state population?
 var url = "http://api.census.gov/data/2013/acs5?get=NAME,B01001_001E&for=state:*&key="+CENS_id;
+
+
+//total science and engineering, total bachelor's degrees reported
+var url = "http://api.census.gov/data/2013/acs5?get=NAME,B15012_002E&for=state:*&key="+CENS_id;
 
 module.exports = router;
 

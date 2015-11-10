@@ -16,7 +16,8 @@ router.get('/', function(req, res, next) {
 
 router.get('/data/bea', function(req, res, next) {
   var url = "http://www.bea.gov/api/data/?&UserID="+BEA_id+"&method=GetData&datasetname=RegionalData&KeyCode=PCDPI_SI&GeoFIPS=STATE&Year=2012&ResultFormat=JSON&%27";
-   query(url);
+  var amount = req.query.amount;
+  console.log(amount, "amount server side");
   http.get(url, function(response) {
       var body = '';
 
@@ -55,7 +56,10 @@ router.get('/data/bea', function(req, res, next) {
 });
 
 router.get('/data/census', function(req, res, next) {
-  var url = "http://api.census.gov/data/2010/sf1?key="+CENS_id+"&get=PCT012A015,PCT012A119&for=state:01";
+  // console.log(req.query, "req query server side");
+  var state = req.query.state;
+  console.log(state, "state from server side");
+  var url = "http://api.census.gov/data/2010/sf1?key="+CENS_id+"&get=PCT012A015,PCT012A119&for=state:"+state;
 
   http.get(url, function(response) {
       var body = '';

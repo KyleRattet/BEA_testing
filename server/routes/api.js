@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/data/bea', function(req, res, next) {
   var url = "http://www.bea.gov/api/data/?&UserID="+BEA_id+"&method=GetData&datasetname=RegionalData&KeyCode=PCDPI_SI&GeoFIPS=STATE&Year=2012&ResultFormat=JSON&%27";
-
+   query(url);
   http.get(url, function(response) {
       var body = '';
 
@@ -32,6 +32,25 @@ router.get('/data/bea', function(req, res, next) {
     }).on('error', function(e) {
       console.log("Got error: " + e.message);
     });
+
+    // var url2 = "http://www.bea.gov/api/data/?&UserID="+BEA_id+"&method=GetData&DataSetName=GDPbyIndustry&Year=2012,2011&Industry=ALL&tableID=1&Frequency=A&ResultFormat=json";
+
+    // http.get(url2, function(response) {
+    //   var body = '';
+
+    //   response.on('data', function(chunk) {
+
+    //     body += chunk;
+    //   });
+
+    //   response.on('end', function() {
+
+    //     res.send(JSON.parse(body));
+    //   });
+    // }).on('error', function(e) {
+    //   console.log("Got error: " + e.message);
+    // });
+
 
 });
 
@@ -55,6 +74,14 @@ router.get('/data/census', function(req, res, next) {
     });
 
 });
+
+
+//Alabama Population (state code 01)
+var url = "http://api.census.gov/data/2013/acs5?get=NAME,B01001_001E&for=state:01&key="+CENS_id;
+
+//Colorado Population (state code 08)
+var url = "http://api.census.gov/data/2013/acs5?get=NAME,B01001_001E&for=state:08&key="+CENS_id;
+
 
 //GDP By Industry Query
 var url = "http://www.bea.gov/api/data/?&UserID="+BEA_id+"&method=GetData&DataSetName=GDPbyIndustry&Year=2012,2011&Industry=ALL&tableID=1&Frequency=A&ResultFormat=json";

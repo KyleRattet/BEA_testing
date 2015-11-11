@@ -59,7 +59,8 @@ router.get('/data/census', function(req, res, next) {
   // console.log(req.query, "req query server side");
   var state = req.query.state;
   console.log(state, "state from server side");
-  var url = "http://api.census.gov/data/2010/sf1?key="+CENS_id+"&get=PCT012A015,PCT012A119&for=state:"+state;
+  // var url = "http://api.census.gov/data/2010/sf1?key="+CENS_id+"&get=PCT012A015,PCT012A119&for=state:"+state;
+  var url = "http://api.census.gov/data/2013/acs5?get=NAME,B01001_001E&for=state:"+state+"&key="+CENS_id;
 
   http.get(url, function(response) {
       var body = '';
@@ -81,7 +82,7 @@ router.get('/data/census', function(req, res, next) {
 
 
 //Alabama Population (state code 01)
-var url = "http://api.census.gov/data/2013/acs5?get=NAME,B01001_001E&for=state:01&key="+CENS_id;
+
 
 //Colorado Population (state code 08)
 var url = "http://api.census.gov/data/2013/acs5?get=NAME,B01001_001E&for=state:08&key="+CENS_id;

@@ -33,8 +33,15 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
   getInfo('/api/v1/data/census');
  };
 
+ // $scope.educationInput = function () {
+ //    console.log("education input firing")
+ //    $scope.checkboxModel = {
+ //      value1: ""
+ //    };
+ //    console.log($scope.checkboxModel, "checkbox model");
+ // };
 
-
+ $scope.formData = {};
 
 
 

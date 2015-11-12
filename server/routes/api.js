@@ -59,11 +59,20 @@ router.get('/data/census', function(req, res, next) {
   console.log(req.query, "req query server side");
   var state = req.query.state;
   var popCode = req.query.population;
+  var hsEdu = req.query.hsEducation;
+  var bsEdu = req.query.bsEducation;
   console.log(popCode, "population code");
   console.log(state, "state from server side");
-  // var url = "http://api.census.gov/data/2010/sf1?key="+CENS_id+"&get=PCT012A015,PCT012A119&for=state:"+state;
-  var url = "http://api.census.gov/data/2013/acs5?get=NAME,"+popCode+"&for=state:"+state+"&key="+CENS_id;
+  console.log(hsEdu, "hs education code");
+  console.log(bsEdu, "bs education code");
 
+  ///function to build up url
+
+
+
+
+  var url = "http://api.census.gov/data/2013/acs1/profile?get=NAME,"+popCode+','+hsEdu+','+bsEdu+"&for=state:"+state+"&key="+CENS_id;
+  console.log(url, "url")
   http.get(url, function(response) {
       var body = '';
 

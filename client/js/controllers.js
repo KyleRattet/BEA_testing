@@ -19,18 +19,22 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
 
     //use to build out query
     var parameters = {
-      population: $scope.checkboxModel.population,
+      population: $scope.population,
+      hsEducation: $scope.hsEducation,
+      bsEducation: $scope.bsEducation,
       state: $scope.state_select,
-      description: 'test'
         };
+    var state = $scope.state_select;
     httpFactory.get(url, {params: parameters})
     .then(function(response){
         console.log(response, "api info response");
+        $scope.stateData = response.data[1]
+        console.log($scope.stateData, "state data response")
     });
   };
 
  $scope.getData = function () {
-  console.log($scope.state_select, "state")
+  console.log($scope.state_select, "state");
   getInfo('/api/v1/data/census');
  };
 

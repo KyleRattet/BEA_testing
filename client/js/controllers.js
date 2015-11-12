@@ -19,8 +19,9 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
 
     //use to build out query
     var parameters = {
-       state: $scope.state_select,
-       description: 'test'
+      population: $scope.checkboxModel.population,
+      state: $scope.state_select,
+      description: 'test'
         };
     httpFactory.get(url, {params: parameters})
     .then(function(response){
@@ -33,16 +34,18 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
   getInfo('/api/v1/data/census');
  };
 
- // $scope.educationInput = function () {
+ // $scope.sendForm = function () {
  //    console.log("education input firing")
- //    $scope.checkboxModel = {
- //      value1: ""
- //    };
- //    console.log($scope.checkboxModel, "checkbox model");
+ //    $scope.formData = {};
+ //    console.log($scope.formData, "checkbox model");
  // };
 
- $scope.formData = {};
+ // $scope.formData = {};
 
+  // $scope.checkboxModel = {
+  //      value1 : true,
+  //      value2 : 'YES'
+  //    };
 
 
   // getInfo('/api/v1/data/bea');

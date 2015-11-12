@@ -56,11 +56,13 @@ router.get('/data/bea', function(req, res, next) {
 });
 
 router.get('/data/census', function(req, res, next) {
-  // console.log(req.query, "req query server side");
+  console.log(req.query, "req query server side");
   var state = req.query.state;
+  var popCode = req.query.population;
+  console.log(popCode, "population code");
   console.log(state, "state from server side");
   // var url = "http://api.census.gov/data/2010/sf1?key="+CENS_id+"&get=PCT012A015,PCT012A119&for=state:"+state;
-  var url = "http://api.census.gov/data/2013/acs5?get=NAME,B01001_001E&for=state:"+state+"&key="+CENS_id;
+  var url = "http://api.census.gov/data/2013/acs5?get=NAME,"+popCode+"&for=state:"+state+"&key="+CENS_id;
 
   http.get(url, function(response) {
       var body = '';

@@ -43,39 +43,18 @@
       </div>
       <button type="submit" class="btn btn-default" ng-click="educationInput()">Submit</button>
     </form> -->
-    <form>
 
-        <!-- NAME INPUT -->
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" name="name" ng-model="formData.name">
-        </div>
-
-        <!-- =============================================== -->
-        <!-- ALL OUR CHECKBOXES AND RADIO BOXES WILL GO HERE -->
-        <!-- =============================================== -->
-          <label>Favorite Colors</label>
-    <div class="form-group">
-        <label class="checkbox-inline">
-            <input type="checkbox" name="favoriteColors" ng-model="formData.favoriteColors.red"> Red
-        </label>
-        <label class="checkbox-inline">
-            <input type="checkbox" name="favoriteColors" ng-model="formData.favoriteColors.blue"> Blue
-        </label>
-        <label class="checkbox-inline">
-            <input type="checkbox" name="favoriteColors" ng-model="formData.favoriteColors.green"> Green
-        </label>
-    </div>
-        <!-- SUBMIT BUTTON (DOESNT DO ANYTHING) -->
-        <button type="submit" class="btn btn-danger btn-lg">Send Away!</button>
-
-    </form>
-
-    <!-- SHOW OFF OUR FORMDATA OBJECT -->
-    <h2>Sample Form Object</h2>
-    <pre>
-        {{ formData }}
-    </pre>
+    <form name="myForm">
+  <label>Value1:
+    <input type="checkbox" ng-model="checkboxModel.value1">
+  </label><br/>
+  <label>Population
+    <input type="checkbox" ng-model="checkboxModel.population"
+           ng-true-value="'B01001_001E'" >
+   </label><br/>
+  <tt>value1 = {{checkboxModel.value1}}</tt><br/>
+  <tt>population = {{checkboxModel.population}}</tt><br/>
+  </form>
      <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js">
     </script>

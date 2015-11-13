@@ -76,9 +76,9 @@
           <input type="checkbox" ng-model="age" ng-true-value="'DP05_0004PE,DP05_0005PE,DP05_0006PE,DP05_0007PE,DP05_0008PE,DP05_0009PE,DP05_0010PE,DP05_0011PE,DP05_0012PE,DP05_0013PE,DP05_0014PE,DP05_0015PE,DP05_0016PE,DP05_0001PE'" ng-false-value="''">
         </label><br/>
 
-        <h2>Response Data Display</h2>
+        <h2>State Data Display : {{stateData[0]}} Population: {{stateData[14] | number }}</h2>
     <table class="table" ng-model="stateData">
-      <caption>{{stateDate[0]}}</caption>
+      <caption>{{stateData[0]}}</caption>
       <thead>
         <tr>
           <th>Age Range</th>
@@ -95,50 +95,141 @@
         <tr>
           <td>5-9</td>
           <td>{{stateData[2] | number :1 }}%</td>
+          <td>{{(stateData[14] * stateData[2])/100 | number : 0}} </td>
         </tr>
         <tr>
           <td>10-14</td>
           <td>{{stateData[3] | number :1 }}%</td>
+          <td>{{(stateData[14] * stateData[3])/100 | number : 0}} </td>
         </tr>
         <tr>
           <td>15-19</td>
           <td>{{stateData[4] | number :1 }}%</td>
+          <td>{{(stateData[14] * stateData[4])/100 | number : 0}} </td>
         </tr>
         <tr>
           <td>20-24</td>
           <td>{{stateData[5] | number :1 }}%</td>
+          <td>{{(stateData[14] * stateData[5])/100 | number : 0}} </td>
         </tr>
         <tr>
           <td>25-34</td>
           <td>{{stateData[6] | number :1 }}%</td>
+          <td>{{(stateData[14] * stateData[6])/100 | number : 0}} </td>
         </tr>
         <tr>
           <td>35-44</td>
           <td>{{stateData[7] | number :1 }}%</td>
+          <td>{{(stateData[14] * stateData[7])/100 | number : 0}} </td>
         </tr>
         <tr>
           <td>45-54</td>
           <td>{{stateData[8] | number :1 }}%</td>
+          <td>{{(stateData[14] * stateData[8])/100 | number : 0}} </td>
         </tr>
         <tr>
           <td>55-59</td>
           <td>{{stateData[9] | number :1 }}%</td>
+          <td>{{(stateData[14] * stateData[9])/100 | number : 0}} </td>
         </tr>
         <tr>
           <td>60-64</td>
           <td>{{stateData[10] | number :1 }}%</td>
+          <td>{{(stateData[14] * stateData[10])/100 | number : 0}} </td>
         </tr>
         <tr>
           <td>65-74</td>
           <td>{{stateData[11] | number :1 }}%</td>
+          <td>{{(stateData[14] * stateData[11])/100 | number : 0}} </td>
         </tr>
         <tr>
           <td>75-84</td>
           <td>{{stateData[12] | number :1 }}%</td>
+          <td>{{(stateData[14] * stateData[12])/100 | number : 0}} </td>
         </tr>
         <tr>
           <td>85+</td>
           <td>{{stateData[13] | number :1 }}%</td>
+          <td>{{(stateData[14] * stateData[13])/100 | number : 0}} </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Us Data Display : {{usData[0]}} Population: {{usData[14] | number }}</h2>
+    <table class="table" ng-model="usData">
+      <caption>{{usData[0]}}</caption>
+      <thead>
+        <tr>
+          <th>Age Range</th>
+          <th>Population Percentage</th>
+          <th>Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0-5</td>
+          <td>{{usData[1] | number :1 }}%</td>
+          <td>{{(usData[14] * usData[1])/100 | number : 0}} </td>
+        </tr>
+        <tr>
+          <td>5-9</td>
+          <td>{{usData[2] | number :1 }}%</td>
+          <td>{{(usData[14] * usData[2])/100 | number : 0}} </td>
+        </tr>
+        <tr>
+          <td>10-14</td>
+          <td>{{usData[3] | number :1 }}%</td>
+          <td>{{(usData[14] * usData[3])/100 | number : 0}} </td>
+        </tr>
+        <tr>
+          <td>15-19</td>
+          <td>{{usData[4] | number :1 }}%</td>
+          <td>{{(usData[14] * usData[4])/100 | number : 0}} </td>
+        </tr>
+        <tr>
+          <td>20-24</td>
+          <td>{{usData[5] | number :1 }}%</td>
+          <td>{{(usData[14] * usData[5])/100 | number : 0}} </td>
+        </tr>
+        <tr>
+          <td>25-34</td>
+          <td>{{usData[6] | number :1 }}%</td>
+          <td>{{(usData[14] * usData[6])/100 | number : 0}} </td>
+        </tr>
+        <tr>
+          <td>35-44</td>
+          <td>{{usData[7] | number :1 }}%</td>
+          <td>{{(usData[14] * usData[7])/100 | number : 0}} </td>
+        </tr>
+        <tr>
+          <td>45-54</td>
+          <td>{{usData[8] | number :1 }}%</td>
+          <td>{{(usData[14] * usData[8])/100 | number : 0}} </td>
+        </tr>
+        <tr>
+          <td>55-59</td>
+          <td>{{usData[9] | number :1 }}%</td>
+          <td>{{(usData[14] * usData[9])/100 | number : 0}} </td>
+        </tr>
+        <tr>
+          <td>60-64</td>
+          <td>{{usData[10] | number :1 }}%</td>
+          <td>{{(usData[14] * usData[10])/100 | number : 0}} </td>
+        </tr>
+        <tr>
+          <td>65-74</td>
+          <td>{{usData[11] | number :1 }}%</td>
+          <td>{{(usData[14] * usData[11])/100 | number : 0}} </td>
+        </tr>
+        <tr>
+          <td>75-84</td>
+          <td>{{usData[12] | number :1 }}%</td>
+          <td>{{(usData[14] * usData[12])/100 | number : 0}} </td>
+        </tr>
+        <tr>
+          <td>85+</td>
+          <td>{{usData[13] | number :1 }}%</td>
+          <td>{{(usData[14] * usData[13])/100 | number : 0}} </td>
         </tr>
       </tbody>
     </table>

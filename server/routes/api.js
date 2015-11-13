@@ -72,7 +72,7 @@ function ifClicked (obj) {
   return results;
 }
 
-router.get('/data/census', function(req, res, next) {
+router.get('/data/census/state', function(req, res, next) {
   console.log(req.query, "req query server side");
 
   ///function to build up url
@@ -84,6 +84,36 @@ router.get('/data/census', function(req, res, next) {
   console.log(queryCodes, "query codes");
 
   var url = "http://api.census.gov/data/2013/acs1/profile?get=NAME,"+queryCodes+"&for=state:"+state+"&key="+CENS_id;
+  console.log(url, "url")
+  http.get(url, function(response) {
+      var body = '';
+
+      response.on('data', function(chunk) {
+
+        body += chunk;
+      });
+
+      response.on('end', function() {
+
+        res.send(JSON.parse(body));
+      });
+    }).on('error', function(e) {
+      console.log("Got error: " + e.message);
+    });
+
+});
+
+router.get('/data/census/national', function(req, res, next) {
+  console.log(req.query, "req query server side");
+
+  ///function to build up url
+  var queryBuild = ifClicked(req.query);
+  console.log(queryBuild, "query string builder");
+
+  var queryCodes = queryBuild[1];
+
+
+  var url = "http://api.census.gov/data/2013/acs1/profile?get=NAME,"+queryCodes+"&for=us:*&key="+CENS_id;
   console.log(url, "url")
   http.get(url, function(response) {
       var body = '';

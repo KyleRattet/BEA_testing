@@ -34,9 +34,25 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
     });
   };
 
+  getNatInfo = function (url) {
+
+    //use to build out query
+    var parameters = {
+      ageBreakdown: $scope.age,
+        };
+    // var state = $scope.state_select;
+    httpFactory.get(url, {params: parameters})
+    .then(function(response){
+        console.log(response, "api info response");
+        $scope.usData = response.data[1]
+        console.log($scope.usData, "us data response")
+    });
+  };
+
  $scope.getData = function () {
   console.log($scope.state_select, "state");
-  getInfo('/api/v1/data/census');
+  getInfo('/api/v1/data/census/state');
+  getNatInfo('/api/v1/data/census/national');
  };
 
  // $scope.sendForm = function () {

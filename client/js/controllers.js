@@ -24,7 +24,7 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
       bsEducation: $scope.bsEducation,
       state: $scope.state_select,
         };
-    var state = $scope.state_select;
+    // var state = $scope.state_select;
     httpFactory.get(url, {params: parameters})
     .then(function(response){
         console.log(response, "api info response");

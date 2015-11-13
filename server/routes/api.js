@@ -55,23 +55,35 @@ router.get('/data/bea', function(req, res, next) {
 
 });
 
+function ifClicked (obj) {
+  var search = "";
+  var keys = Object.keys(obj);
+  var state = obj[keys[keys.length -1]];
+  var results = [state]
+  for (i =0; i< keys.length; i++) {
+     if(i < keys.length - 2 && keys[i] !== 'state') {
+         search += obj[keys[i]]+','
+     } else if(keys[i] !== 'state'){
+      search += obj[keys[i]];
+     }
+  }
+
+  results.push(search);
+  return results;
+}
+
 router.get('/data/census', function(req, res, next) {
   console.log(req.query, "req query server side");
-  var state = req.query.state;
-  var popCode = req.query.population;
-  var hsEdu = req.query.hsEducation;
-  var bsEdu = req.query.bsEducation;
-  console.log(popCode, "population code");
-  console.log(state, "state from server side");
-  console.log(hsEdu, "hs education code");
-  console.log(bsEdu, "bs education code");
 
   ///function to build up url
+  var queryBuild = ifClicked(req.query);
+  console.log(queryBuild, "query string builder");
+  var state = queryBuild[0];
+  var queryCodes = queryBuild[1];
+  console.log(state, "state");
+  console.log(queryCodes, "query codes");
 
-
-
-
-  var url = "http://api.census.gov/data/2013/acs1/profile?get=NAME,"+popCode+','+hsEdu+','+bsEdu+"&for=state:"+state+"&key="+CENS_id;
+  var url = "http://api.census.gov/data/2013/acs1/profile?get=NAME,"+queryCodes+"&for=state:"+state+"&key="+CENS_id;
   console.log(url, "url")
   http.get(url, function(response) {
       var body = '';

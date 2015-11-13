@@ -26,17 +26,17 @@ var test = { bsEducation: 'DP02_0067PE',
   state: '01' };
 
 //need to address state in building up URL
-function ifClicked (obj) {
-  var search = '';
-  var keys = Object.keys(obj);
-  for (i =0; i< keys.length; i++) {
-     if(i < keys.length - 1) {
-         search += obj[keys[i]]+','
-     } else {
-      search += obj[keys[i]];
-     }
-  }
+// function ifClicked (obj) {
+//   var search = '';
+//   var keys = Object.keys(obj);
+//   for (i =0; i< keys.length; i++) {
+//      if(i < keys.length - 1) {
+//          search += obj[keys[i]]+','
+//      } else {
+//       search += obj[keys[i]];
+//      }
+//   }
 
-  return search;
-}
+//   return search;
+// }
 

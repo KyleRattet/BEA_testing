@@ -22,6 +22,7 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
       population: $scope.population,
       hsEducation: $scope.hsEducation,
       bsEducation: $scope.bsEducation,
+      ageBreakdown: $scope.age,
       state: $scope.state_select,
         };
     // var state = $scope.state_select;

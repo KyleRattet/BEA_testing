@@ -26,6 +26,7 @@
 
 
     <form name="myForm">
+    <h3>Test Fields</h3>
   <label>Value1:
     <input type="checkbox" ng-model="checkboxModel.value1">
   </label><br/>
@@ -68,6 +69,81 @@
       </tbody>
     </table>
 
+    <h3>Age Breakdown Query</h3>
+       <form name="myForm">
+
+        <label>All:
+          <input type="checkbox" ng-model="age" ng-true-value="'DP05_0004PE,DP05_0005PE,DP05_0006PE,DP05_0007PE,DP05_0008PE,DP05_0009PE,DP05_0010PE,DP05_0011PE,DP05_0012PE,DP05_0013PE,DP05_0014PE,DP05_0015PE,DP05_0016PE,DP05_0001PE'" ng-false-value="''">
+        </label><br/>
+
+        <h2>Response Data Display</h2>
+    <table class="table" ng-model="stateData">
+      <caption>{{stateDate[0]}}</caption>
+      <thead>
+        <tr>
+          <th>Age Range</th>
+          <th>Population Percentage</th>
+          <th>Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0-5</td>
+          <td>{{stateData[1] | number :1 }}%</td>
+          <td>{{(stateData[14] * stateData[1])/100 | number : 0}} </td>
+        </tr>
+        <tr>
+          <td>5-9</td>
+          <td>{{stateData[2] | number :1 }}%</td>
+        </tr>
+        <tr>
+          <td>10-14</td>
+          <td>{{stateData[3] | number :1 }}%</td>
+        </tr>
+        <tr>
+          <td>15-19</td>
+          <td>{{stateData[4] | number :1 }}%</td>
+        </tr>
+        <tr>
+          <td>20-24</td>
+          <td>{{stateData[5] | number :1 }}%</td>
+        </tr>
+        <tr>
+          <td>25-34</td>
+          <td>{{stateData[6] | number :1 }}%</td>
+        </tr>
+        <tr>
+          <td>35-44</td>
+          <td>{{stateData[7] | number :1 }}%</td>
+        </tr>
+        <tr>
+          <td>45-54</td>
+          <td>{{stateData[8] | number :1 }}%</td>
+        </tr>
+        <tr>
+          <td>55-59</td>
+          <td>{{stateData[9] | number :1 }}%</td>
+        </tr>
+        <tr>
+          <td>60-64</td>
+          <td>{{stateData[10] | number :1 }}%</td>
+        </tr>
+        <tr>
+          <td>65-74</td>
+          <td>{{stateData[11] | number :1 }}%</td>
+        </tr>
+        <tr>
+          <td>75-84</td>
+          <td>{{stateData[12] | number :1 }}%</td>
+        </tr>
+        <tr>
+          <td>85+</td>
+          <td>{{stateData[13] | number :1 }}%</td>
+        </tr>
+      </tbody>
+    </table>
+
+        </form>
 
      <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js">

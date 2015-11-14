@@ -13,9 +13,23 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
 
 
   //use this to build out query
+  getNatInfo = function (url) {
+
+    //use to build out query
+    var parameters = {
+      ageBreakdown: $scope.age,
+        };
+    // var state = $scope.state_select;
+    httpFactory.get(url, {params: parameters})
+    .then(function(response){
+        // console.log(response, "api info response");
+        $scope.usData = response.data[1]
+        console.log($scope.usData, "us data response")
+    });
+  };
 
 
-  getInfo = function (url) {
+  getStateInfo = function (url) {
 
     //use to build out query
     var parameters = {
@@ -28,31 +42,34 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
     // var state = $scope.state_select;
     httpFactory.get(url, {params: parameters})
     .then(function(response){
-        console.log(response, "api info response");
+        // console.log(response, "api info response");
         $scope.stateData = response.data[1]
         console.log($scope.stateData, "state data response")
     });
   };
 
-  getNatInfo = function (url) {
+  getCountyInfo = function (url) {
 
     //use to build out query
     var parameters = {
       ageBreakdown: $scope.age,
+      state: $scope.state_select,
+      county: $scope.county_select
         };
     // var state = $scope.state_select;
     httpFactory.get(url, {params: parameters})
     .then(function(response){
         console.log(response, "api info response");
-        $scope.usData = response.data[1]
-        console.log($scope.usData, "us data response")
+        $scope.countyData = response.data[1]
+        console.log($scope.countyData, "county data response");
     });
   };
 
  $scope.getData = function () {
-  console.log($scope.state_select, "state");
-  getInfo('/api/v1/data/census/state');
+
+  getStateInfo('/api/v1/data/census/state');
   getNatInfo('/api/v1/data/census/national');
+  getCountyInfo('/api/v1/data/census/county');
  };
 
  // $scope.sendForm = function () {

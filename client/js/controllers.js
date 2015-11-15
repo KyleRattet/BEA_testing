@@ -37,21 +37,25 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
   //        { key: "Six", y: 3 },
   //       { key: "Seven", y: 9 }
   //    ];
-    /* Chart options */
-        $scope.options = {
+    /* National Chart options */
+         $scope.nationalOptions = {
             chart: {
                 type: 'pieChart',
-                height: 500,
+                height: 450,
+                donut: true,
                 x: function(d){return d.key;},
                 y: function(d){return d.y;},
                 showLabels: true,
+
+                pie: {
+                    startAngle: function(d) { return d.startAngle/2 -Math.PI/2 },
+                    endAngle: function(d) { return d.endAngle/2 -Math.PI/2 }
+                },
                 duration: 500,
-                labelThreshold: 0.01,
-                labelSunbeamLayout: true,
                 legend: {
                     margin: {
                         top: 5,
-                        right: 35,
+                        right: 140,
                         bottom: 5,
                         left: 0
                     }
@@ -60,37 +64,32 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
         };
 
         /* Chart data */
-        $scope.data = [
-            {
-                key: "One",
-                y: 5
-            },
-            {
-                key: "Two",
-                y: 2
-            },
-            {
-                key: "Three",
-                y: 9
-            },
-            {
-                key: "Four",
-                y: 7
-            },
-            {
-                key: "Five",
-                y: 4
-            },
-            {
-                key: "Six",
-                y: 3
-            },
-            {
-                key: "Seven",
-                y: .5
-            }
-        ];
 
+        /* State Chart options */
+         $scope.stateOptions = {
+            chart: {
+                type: 'pieChart',
+                height: 450,
+                donut: true,
+                x: function(d){return d.key;},
+                y: function(d){return d.y;},
+                showLabels: true,
+
+                pie: {
+                    startAngle: function(d) { return d.startAngle/2 -Math.PI/2 },
+                    endAngle: function(d) { return d.endAngle/2 -Math.PI/2 }
+                },
+                duration: 500,
+                legend: {
+                    margin: {
+                        top: 5,
+                        right: 140,
+                        bottom: 5,
+                        left: 0
+                    }
+                }
+            }
+        };
 
   //use this to build out query
   getNatInfo = function (url) {
@@ -105,6 +104,60 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
         // console.log(response, "api info response");
         $scope.usData = response.data[1]
         console.log($scope.usData, "us data response")
+        $scope.nationalData = [
+            {
+                key: "0-5",
+                y: $scope.usData[1]
+            },
+            {
+                key: "5-9",
+                y: $scope.usData[2]
+            },
+            {
+                key: "10-14",
+                y: $scope.usData[3]
+            },
+            {
+                key: "15-19",
+                y: $scope.usData[4]
+            },
+            {
+                key: "20-24",
+                y: $scope.usData[5]
+            },
+            {
+                key: "25-34",
+                y: $scope.usData[6]
+            },
+            {
+                key: "35-44",
+                y: $scope.usData[7]
+            },
+            {
+                key: "45-54",
+                y: $scope.usData[8]
+            },
+            {
+                key: "55-59",
+                y: $scope.usData[9]
+            },
+            {
+                key: "60-64",
+                y: $scope.usData[10]
+            },
+            {
+                key: "65-74",
+                y: $scope.usData[11]
+            },
+            {
+                key: "75-84",
+                y: $scope.usData[12]
+            },
+            {
+                key: "85+",
+                y: $scope.usData[13]
+            }
+        ];
     });
   };
 
@@ -125,6 +178,60 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
         // console.log(response, "api info response");
         $scope.stateData = response.data[1]
         console.log($scope.stateData, "state data response")
+        $scope.statePieData = [
+            {
+                key: "0-5",
+                y: $scope.stateData[1]
+            },
+            {
+                key: "5-9",
+                y: $scope.stateData[2]
+            },
+            {
+                key: "10-14",
+                y: $scope.stateData[3]
+            },
+            {
+                key: "15-19",
+                y: $scope.stateData[4]
+            },
+            {
+                key: "20-24",
+                y: $scope.stateData[5]
+            },
+            {
+                key: "25-34",
+                y: $scope.stateData[6]
+            },
+            {
+                key: "35-44",
+                y: $scope.stateData[7]
+            },
+            {
+                key: "45-54",
+                y: $scope.stateData[8]
+            },
+            {
+                key: "55-59",
+                y: $scope.stateData[9]
+            },
+            {
+                key: "60-64",
+                y: $scope.stateData[10]
+            },
+            {
+                key: "65-74",
+                y: $scope.stateData[11]
+            },
+            {
+                key: "75-84",
+                y: $scope.stateData[12]
+            },
+            {
+                key: "85+",
+                y: $scope.stateData[13]
+            }
+        ];
     });
   };
 
@@ -145,11 +252,18 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
     });
   };
 
- $scope.getData = function () {
+ $scope.getNationalData = function () {
+
+  // getStateInfo('/api/v1/data/census/state');
+  getNatInfo('/api/v1/data/census/national');
+  // getCountyInfo('/api/v1/data/census/county');
+ };
+
+ $scope.getStateData = function () {
 
   getStateInfo('/api/v1/data/census/state');
-  getNatInfo('/api/v1/data/census/national');
-  getCountyInfo('/api/v1/data/census/county');
+  // getNatInfo('/api/v1/data/census/national');
+  // getCountyInfo('/api/v1/data/census/county');
  };
 
  // $scope.sendForm = function () {

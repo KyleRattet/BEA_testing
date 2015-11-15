@@ -293,7 +293,7 @@
           <option value="013">Boulder</option>
         </select>
 
-        <button ng-click="getData()">Get State Data</button>
+        <button ng-click="getNationalData(); getStateData()">Get State Data</button>
 
         <h2>County Display : {{countyData[0]}} Population: {{countyData[14] | number   }}</h2>
     <table class="table" ng-model="countyData">
@@ -375,26 +375,16 @@
     </table>
 
 
-      <!-- <div class="col-sm-6 col-sm-offset-3">
-        <nvd3-pie-chart height="350" data="exampleData" showXAxis="true" showYAxis="true" showLegend="true">
-        </nvd3-pie-chart>
-      </div> -->
-     <!--  <div ng-controller="MainController">
-        <nvd3-pie-chart
-          data="exampleData"
-            id="exampleId"
-            width="550"
-            height="350"
-            x="xFunction()"
-            y="yFunction()"
-            showLabels="true">
-            <svg></svg>
-        </nvd3-pie-chart>
-    </div> -->
 
 
+        <h3>National Data</h3>
         <div ng-controller="MainController">
-            <nvd3 options="options" data="data"></nvd3>
+            <nvd3 options="nationalOptions" data="nationalData"></nvd3>
+        </div>
+
+        <h3>State Data</h3>
+        <div ng-controller="MainController">
+            <nvd3 options="stateOptions" data="statePieData"></nvd3>
         </div>
 
      <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>

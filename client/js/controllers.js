@@ -3,40 +3,6 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
   $scope.title = "Welcome to BEA Testing";
  $scope.test = "testing controller";
 
-
- // getData = function (id) {
- //    httpFactory.getData(id)
- //    .then(function(response){
- //      console.log(response.data);
- //    });
- //  };
-//  $scope.xAxisTickFormatFunction = function(){
-//   return function(date){
-//     return d3.time.format('%x')(new Date(date));
-//   };
-// };
-
-//             $scope.exampleData = [{
-//                 "key": "Quantity",
-//                 "bar": true,
-//                 "values": [
-//                   [10, 20],
-//                   [20, 40],
-//                   [30, 60],
-//                   [40, 80],
-//                   [50, 100]
-//                 ]
-//               }];
-
-  // $scope.exampleData = [
-  //      { key: "One", y: 5 },
-  //        { key: "Two", y: 2 },
-  //        { key: "Three", y: 9 },
-  //        { key: "Four", y: 7 },
-  //       { key: "Five", y: 4 },
-  //        { key: "Six", y: 3 },
-  //       { key: "Seven", y: 9 }
-  //    ];
     /* National Chart options */
          $scope.nationalOptions = {
             chart: {

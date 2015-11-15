@@ -7,21 +7,19 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
          $scope.nationalOptions = {
             chart: {
                 type: 'pieChart',
-                height: 450,
-                donut: true,
+                height: 500,
                 x: function(d){return d.key;},
                 y: function(d){return d.y;},
                 showLabels: true,
-
-                pie: {
-                    startAngle: function(d) { return d.startAngle/2 -Math.PI/2 },
-                    endAngle: function(d) { return d.endAngle/2 -Math.PI/2 }
-                },
+                donut:"true",
+                donutRatio:".25",
                 duration: 500,
+                labelThreshold: 0.01,
+                labelSunbeamLayout: true,
                 legend: {
                     margin: {
                         top: 5,
-                        right: 140,
+                        right: 35,
                         bottom: 5,
                         left: 0
                     }
@@ -40,6 +38,7 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
                 x: function(d){return d.key;},
                 y: function(d){return d.y;},
                 showLabels: true,
+                labelType:"percent",
 
                 pie: {
                     startAngle: function(d) { return d.startAngle/2 -Math.PI/2 },
@@ -56,6 +55,75 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
                 }
             }
         };
+
+        $scope.countyOptions = {
+            chart: {
+                type: 'multiBarChart',
+                height: 450,
+                margin : {
+                    top: 20,
+                    right: 20,
+                    bottom: 50,
+                    left: 55
+                },
+                x: function(d){return d.label;},
+                y: function(d){return d.value;},
+                showValues: true,
+                valueFormat: function(d){
+                    return d3.format(',.4f')(d);
+                },
+                duration: 500,
+                stacked: true,
+                xAxis: {
+                    axisLabel: 'X Axis'
+                },
+                yAxis: {
+                    axisLabel: 'Y Axis',
+                    axisLabelDistance: -10
+                }
+            }
+        };
+
+        $scope.countyChartData = [
+            {
+                key: "Cumulative Return",
+                values: [
+                    {
+                        "label" : "A" ,
+                        "value" : -29.765957771107
+                    } ,
+                    {
+                        "label" : "B" ,
+                        "value" : 0
+                    } ,
+                    {
+                        "label" : "C" ,
+                        "value" : 32.807804682612
+                    } ,
+                    {
+                        "label" : "D" ,
+                        "value" : 196.45946739256
+                    } ,
+                    {
+                        "label" : "E" ,
+                        "value" : 0.19434030906893
+                    } ,
+                    {
+                        "label" : "F" ,
+                        "value" : -98.079782601442
+                    } ,
+                    {
+                        "label" : "G" ,
+                        "value" : -13.925743130903
+                    } ,
+                    {
+                        "label" : "H" ,
+                        "value" : -5.1387322875705
+                    }
+                ]
+            }
+        ]
+
 
   //use this to build out query
   getNatInfo = function (url) {
@@ -220,14 +288,14 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
 
  $scope.getNationalData = function () {
 
-  // getStateInfo('/api/v1/data/census/state');
+  getStateInfo('/api/v1/data/census/state');
   getNatInfo('/api/v1/data/census/national');
   // getCountyInfo('/api/v1/data/census/county');
  };
 
  $scope.getStateData = function () {
 
-  getStateInfo('/api/v1/data/census/state');
+  // getStateInfo('/api/v1/data/census/state');
   // getNatInfo('/api/v1/data/census/national');
   // getCountyInfo('/api/v1/data/census/county');
  };

@@ -20,6 +20,7 @@ $(document).on('ready', function() {
 
 // var search = "";
 
+
 var test = { bsEducation: 'DP02_0067PE',
   description: 'test',
   population: 'DP05_0028E',

@@ -133,7 +133,7 @@ router.get('/data/census/state', function(req, res, next) {
   console.log(queryCodes, "query codes");
 
   var url = "http://api.census.gov/data/2013/acs1/profile?get=NAME,"+queryCodes+"&for=state:"+state+"&key="+CENS_id;
-  console.log(url, "url")
+  console.log(url, "url state")
   http.get(url, function(response) {
       var body = '';
 

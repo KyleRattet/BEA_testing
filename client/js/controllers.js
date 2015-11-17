@@ -252,11 +252,11 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
                     "key": "County",
                     "values": [["County", $scope.countyData[1]], ["County",$scope.countyData[2]], ["County", $scope.countyData[3]], ["County", $scope.countyData[4]],["County", $scope.countyData[5]],["County", $scope.countyData[6]],["County", $scope.countyData[7]],["County", $scope.countyData[8]],["County", $scope.countyData[9]],["County", $scope.countyData[10]],["County", $scope.countyData[11]],["County", $scope.countyData[12]],["County", $scope.countyData[13]]]
                 }
-                // ,
-                // {
-                //     "key": "state",
-                //     "values": [["state", $scope.stateData[1]], ["state",$scope.stateData[2]], ["state", $scope.stateData[3]], ["state", $scope.stateData[4]],["state", $scope.stateData[5]],["state", $scope.stateData[6]],["state", $scope.stateData[7]],["state", $scope.stateData[8]],["state", $scope.stateData[9]],["state", $scope.stateData[10]],["state", $scope.stateData[11]],["state", $scope.stateData[12]],["state", $scope.stateData[13]]]
-                // }
+                ,
+                {
+                    "key": "state",
+                    "values": [["state", $scope.stateData[1]], ["state",$scope.stateData[2]], ["state", $scope.stateData[3]], ["state", $scope.stateData[4]],["state", $scope.stateData[5]],["state", $scope.stateData[6]],["state", $scope.stateData[7]],["state", $scope.stateData[8]],["state", $scope.stateData[9]],["state", $scope.stateData[10]],["state", $scope.stateData[11]],["state", $scope.stateData[12]],["state", $scope.stateData[13]]]
+                }
                 // {
                 //     "key": "National",
                 //     "values": [[0,50], [0, 56]]

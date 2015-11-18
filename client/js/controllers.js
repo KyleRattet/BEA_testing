@@ -73,6 +73,41 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
             }
         };
 
+        $scope.optionsDiscreteBar = {
+            chart: {
+                type: 'discreteBarChart',
+                height: 450,
+                margin : {
+                    top: 20,
+                    right: 20,
+                    bottom: 50,
+                    left: 55
+                },
+                x: function(d){return d.label;},
+                y: function(d){return d.value;},
+                showValues: true,
+                valueFormat: function(d){
+                    return d3.format(',.4f')(d);
+                },
+                duration: 500,
+                xAxis: {
+                    axisLabel: 'Age'
+                },
+                yAxis: {
+                    axisLabel: 'Percent of Population',
+                    axisLabelDistance: -10
+                },
+
+            },
+            title: {
+                enable: true,
+                text: 'Title for Line Chart'
+            }
+        };
+
+
+
+
         // $scope.countyChartData = [
         //    {
         //             "key": "County",
@@ -154,6 +189,58 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
                 y: $scope.usData[13]
             }
         ];
+
+        $scope.dataDiscreteBar = [
+            {
+                key: "Cumulative Return",
+                values: [
+                    {
+                        "label" : "0-5" ,
+                        "value" : $scope.usData[1]
+                    } ,
+                    {
+                        "label" : "5-9" ,
+                        "value" : $scope.usData[2]
+                    } ,
+                    {
+                        "label" : "10-14" ,
+                        "value" : $scope.usData[3]
+                    } ,
+                    {
+                        "label" : '15-19' ,
+                        "value" : $scope.usData[4]
+                    } ,
+                    {
+                        "label" : "20-24" ,
+                        "value" : $scope.usData[5]
+                    } ,
+                    {
+                        "label" : "35-44" ,
+                        "value" : $scope.usData[6]
+                    } ,
+                    {
+                        "label" : "45-54" ,
+                        "value" : $scope.usData[7]
+                    } ,
+                    {
+                        "label" : "60-64" ,
+                        "value" : $scope.usData[8]
+                    } ,
+                    {
+                        "label" : "65-74" ,
+                        "value" : $scope.usData[9]
+                    } ,
+                    {
+                        "label" : "75-84" ,
+                        "value" : $scope.usData[10]
+                    } ,
+                    {
+                        "label" : "85+" ,
+                        "value" : $scope.usData[11]
+                    }
+                ]
+            }
+        ]
     });
   };
 
@@ -252,11 +339,11 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
                     "key": "County",
                     "values": [["County", $scope.countyData[1]], ["County",$scope.countyData[2]], ["County", $scope.countyData[3]], ["County", $scope.countyData[4]],["County", $scope.countyData[5]],["County", $scope.countyData[6]],["County", $scope.countyData[7]],["County", $scope.countyData[8]],["County", $scope.countyData[9]],["County", $scope.countyData[10]],["County", $scope.countyData[11]],["County", $scope.countyData[12]],["County", $scope.countyData[13]]]
                 }
-                ,
-                {
-                    "key": "state",
-                    "values": [["state", $scope.stateData[1]], ["state",$scope.stateData[2]], ["state", $scope.stateData[3]], ["state", $scope.stateData[4]],["state", $scope.stateData[5]],["state", $scope.stateData[6]],["state", $scope.stateData[7]],["state", $scope.stateData[8]],["state", $scope.stateData[9]],["state", $scope.stateData[10]],["state", $scope.stateData[11]],["state", $scope.stateData[12]],["state", $scope.stateData[13]]]
-                }
+                // ,
+                // {
+                //     "key": "state",
+                //     "values": [["state", $scope.stateData[1]], ["state",$scope.stateData[2]], ["state", $scope.stateData[3]], ["state", $scope.stateData[4]],["state", $scope.stateData[5]],["state", $scope.stateData[6]],["state", $scope.stateData[7]],["state", $scope.stateData[8]],["state", $scope.stateData[9]],["state", $scope.stateData[10]],["state", $scope.stateData[11]],["state", $scope.stateData[12]],["state", $scope.stateData[13]]]
+                // }
                 // {
                 //     "key": "National",
                 //     "values": [[0,50], [0, 56]]

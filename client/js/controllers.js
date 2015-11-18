@@ -101,7 +101,7 @@ app.controller("MainController", ['$scope', '$http', 'httpFactory', function($sc
             },
             title: {
                 enable: true,
-                text: 'Title for Line Chart'
+                text: 'Age Brackets (%)'
             }
         };
 
